@@ -1,0 +1,38 @@
+# OmniParser V2 - Docker dependencies (core parsing only)
+# PyTorch + torchvision are installed separately in Dockerfile with CUDA index URL
+
+# Core ML
+numpy==1.26.4
+Pillow
+
+# HuggingFace / model loading
+transformers==4.38.2
+accelerate
+timm
+einops==0.8.0
+
+# YOLO object detection
+ultralytics==8.3.70
+supervision==0.18.0
+
+# OCR engines
+easyocr
+paddlepaddle<=2.8
+paddleocr<=2.8
+
+# OpenCV (headless only — no GUI libs needed in Docker)
+opencv-python-headless
+
+# Web frameworks (Gradio demo + FastAPI server)
+gradio
+fastapi
+uvicorn[standard]
+pydantic
+
+# Utilities
+dill
+requests
+setuptools
+
+# Required by util/utils.py module-level import (from openai import AzureOpenAI)
+openai==1.3.5

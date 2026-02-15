@@ -1,0 +1,47 @@
+# Version control
+.git
+.gitignore
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Weights (volume-mounted at runtime, not baked into image)
+weights/
+
+# Evaluation, docs, notebooks, images
+eval/
+docs/
+imgs/
+*.ipynb
+
+# OmniTool VM (QEMU Windows VM — separate concern)
+omnitool/omnibox/
+
+# OmniTool Gradio agent UI (separate from core parsing)
+omnitool/gradio/
+
+# Dev/test tooling
+.ruff_cache/
+.pytest_cache/
+.pre-commit-config.yaml
+
+# OS artifacts
+Thumbs.db
+.DS_Store
+
+# Docker files (don't nest in build context)
+Dockerfile
+docker-compose.yml
+.dockerignore
