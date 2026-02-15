@@ -1,5 +1,10 @@
 # This is a fork of Microsoft's OmniParser
 
+This repository is a fork of [Microsoft's OmniParser](https://github.com/microsoft/OmniParser), 
+which is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). 
+Modifications include a working Dockerfile (generated with assistance from Opus 4.6) and 
+any related adjustments to run the project in containers.
+
 ## Differences
 
 I asked Opus 4.6 to generate a working Dockerfile.
