@@ -18,7 +18,6 @@ for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.
   hf download microsoft/OmniParser-v2.0 "$f" --local-dir weights
 done
 
-# Rename the folder as per your original plan
 mv weights/icon_caption weights/icon_caption_florence
 ```
 
