@@ -9,6 +9,19 @@ any related adjustments to run the project in containers.
 
 I asked Opus 4.6 to generate a working Dockerfile.
 
+## How to download weights from HuggingFace using [hf](https://huggingface.co/docs/huggingface_hub/en/guides/cli):
+
+Using bash:
+
+```bash
+for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.json,generation_config.json,model.safetensors}; do 
+  hf download microsoft/OmniParser-v2.0 "$f" --local-dir weights
+done
+
+# Rename the folder as per your original plan
+mv weights/icon_caption weights/icon_caption_florence
+```
+
 ## FastAPI
 
 `docker compose --profile server up`
