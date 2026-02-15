@@ -9,7 +9,21 @@ any related adjustments to run the project in containers.
 
 I asked Opus 4.6 to generate a working Dockerfile.
 
-## Building and running through Docker compose
+## FastAPI
+
+`docker compose --profile server up`
+
+Or with docker run directly:
+
+`docker run --gpus all -p 8000:8000 -v ./weights:/app/weights:ro -v omniparser-ocr-cache:/app/ocr_cache -e OMNIPARSER_MODE=server omniparser:v2`
+
+The API endpoints:
+- Health check: GET http://localhost:8000/probe/
+- Parse screenshot: POST http://localhost:8000/parse/ with JSON body {"base64_image": "<base64-encoded-png>"}
+
+## gradio
+
+### Building and running through Docker compose
 
 `docker compose --profile gradio build 2>&1`
 
