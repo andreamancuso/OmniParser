@@ -7,7 +7,11 @@ any related adjustments to run the project in containers.
 
 ## Differences
 
-I asked Opus 4.6 to generate a working Dockerfile.
+I asked Opus 4.6 to:
+
+* generate a working Dockerfile
+* add 3 GPU modes through the `OMNIPARSER_GPU_MODE` environment variable: `persistent` (original behaviour), `ondemand` (models on CPU, moved to GPU per request, offloaded after idle timeout), `cpu` (GPU never used)
+* add `OMNIPARSER_GPU_IDLE_TIMEOUT`, i.e. number of seconds of inactivity before GPU models are offloaded
 
 ## How to download weights from HuggingFace using [hf](https://huggingface.co/docs/huggingface_hub/en/guides/cli):
 
