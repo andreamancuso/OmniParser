@@ -19,7 +19,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 import easyocr
 from paddleocr import PaddleOCR
-reader = easyocr.Reader(['en'])
+import torch
+_gpu_mode = os.environ.get('OMNIPARSER_GPU_MODE', 'persistent')
+_easyocr_gpu = (_gpu_mode == 'persistent') and torch.cuda.is_available()
+reader = easyocr.Reader(['en'], gpu=_easyocr_gpu)
 paddle_ocr = PaddleOCR(
     lang='en',  # other lang also available
     use_angle_cls=False,
@@ -379,18 +382,22 @@ def predict_yolo(model, image, box_threshold, imgsz, scale_img, iou_threshold=0.
     """ Use huggingface model to replace the original model
     """
     # model = model['model']
+    gpu_mode = os.environ.get('OMNIPARSER_GPU_MODE', 'persistent')
+    yolo_device = 0 if (gpu_mode == 'persistent' and torch.cuda.is_available()) else 'cpu'
     if scale_img:
         result = model.predict(
         source=image,
         conf=box_threshold,
         imgsz=imgsz,
         iou=iou_threshold, # default 0.7
+        device=yolo_device,
         )
     else:
         result = model.predict(
         source=image,
         conf=box_threshold,
         iou=iou_threshold, # default 0.7
+        device=yolo_device,
         )
     boxes = result[0].boxes.xyxy#.tolist() # in pixel space
     conf = result[0].boxes.conf

@@ -84,6 +84,13 @@ ENV GRADIO_ANALYTICS_ENABLED=false
 # 128 = ~4GB VRAM, 64 = ~2GB, 32 = ~1GB
 ENV OMNIPARSER_BATCH_SIZE=64
 
+# GPU memory management: persistent | ondemand | cpu
+# persistent = models stay on GPU (fastest, uses VRAM permanently)
+# ondemand   = models on CPU, shuttle to GPU per request (~100ms overhead)
+# cpu        = GPU never used (slowest, zero VRAM)
+ENV OMNIPARSER_GPU_MODE=ondemand
+ENV OMNIPARSER_GPU_IDLE_TIMEOUT=5
+
 # Python module resolution (eliminates sys.path.append hacks)
 ENV PYTHONPATH=/app
 
